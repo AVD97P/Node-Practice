@@ -17,6 +17,11 @@ app.get("/api/cinema", (req, res) => {
 });
 
 app.post("/api/cinema", (req, res) => {
+  if (!req.body.name || req.body.name.length < 5) {
+    //400 Bad Request
+    res.status(400).send("Name should be required with min 5 character");
+    return;
+  }
   const course = {
     id: Cinema.length + 1,
     name: req.body.name,
