@@ -1,3 +1,4 @@
+const Joi = require("joi");
 const express = require("express");
 const app = express();
 
@@ -17,11 +18,22 @@ app.get("/api/cinema", (req, res) => {
 });
 
 app.post("/api/cinema", (req, res) => {
-  if (!req.body.name || req.body.name.length < 5) {
+  // if (!req.body.name || req.body.name.length < 5) {
+  //   //400 Bad Request
+  //   res.status(400).send("Name should be required with min 5 character");
+  //   return;
+  // }
+
+  const schema = {
+    name: Joi.string().min(5).required(),
+  };
+  const result = Joi.validate(req.body, schema);
+  if (result.error) {
     //400 Bad Request
-    res.status(400).send("Name should be required with min 5 character");
+    res.status(400).send(result.error.details[0].message);
     return;
   }
+
   const course = {
     id: Cinema.length + 1,
     name: req.body.name,
