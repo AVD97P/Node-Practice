@@ -3,30 +3,30 @@ const app = express();
 
 app.use(express.json());
 
-const courses = [
-  { id: 1, name: "abcd" },
-  { id: 2, name: "pqrs" },
-  { id: 3, name: "lmno" },
+const Cinema = [
+  { id: 1, name: "Movie1" },
+  { id: 2, name: "Movie2" },
+  { id: 3, name: "Movie3" },
 ];
 app.get("/", (req, res) => {
   res.send("Hey , AVD");
 });
 
-app.get("/api/courses", (req, res) => {
+app.get("/api/cinema", (req, res) => {
   res.send(JSON.stringify([1, 2, 3, 4, 5]));
 });
 
-app.post("/api/courses", (req, res) => {
+app.post("/api/cinema", (req, res) => {
   const course = {
-    id: courses.length + 1,
+    id: Cinema.length + 1,
     name: req.body.name,
   };
-  courses.push(course);
+  Cinema.push(course);
   res.send(course);
 });
 
-app.get("/api/courses/:id", (req, res) => {
-  const course = courses.find((ele) => ele.id === parseInt(req.params.id));
+app.get("/api/cinema/:id", (req, res) => {
+  const course = Cinema.find((ele) => ele.id === parseInt(req.params.id));
   if (!course) {
     res.status(404).send("Not Found!");
   } else {
