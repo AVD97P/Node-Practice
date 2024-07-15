@@ -1,5 +1,4 @@
 //Practice code only for "http" FUnction on Node.js
-
 const http = require("http");
 
 const server = http.createServer((req, res) => {
@@ -14,5 +13,4 @@ const server = http.createServer((req, res) => {
 });
 
 server.listen(3000);
-
 console.log("Listening on server 3000 ...");
