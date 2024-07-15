@@ -21,7 +21,6 @@ router.post("/", (req, res) => {
 
   const { error } = validateCinema(req.body);
   if (error) {
-    //400 Bad Request
     res.status(400).send(error.details[0].message);
     return;
   }
