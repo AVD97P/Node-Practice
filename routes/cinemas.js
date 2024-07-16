@@ -1,3 +1,4 @@
+const Joi = require("joi");
 const express = require("express");
 const router = express.Router();
 
@@ -5,6 +6,7 @@ const Cinemas = [
   { id: 1, name: "Movie1" },
   { id: 2, name: "Movie2" },
   { id: 3, name: "Movie3" },
+  { id: 4, name: "Movie4" },
 ];
 
 router.get("/", (req, res) => {
